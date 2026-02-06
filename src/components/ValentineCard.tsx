@@ -58,7 +58,15 @@ const ValentineCard = () => {
       <>
         <Confetti active={showConfetti} />
         <div className="valentine-card max-w-sm w-full mx-4 text-center animate-bounce-in">
-          <div className="text-6xl mb-6 animate-pulse-heart">💕</div>
+          <div className="rounded-2xl overflow-hidden mb-4">
+            <iframe
+              src="https://tenor.com/embed/10586631440146974859"
+              width="100%"
+              style={{ aspectRatio: "0.935743", border: "none" }}
+              allowFullScreen
+              title="Minion Love GIF"
+            />
+          </div>
           <h1 className="font-display text-3xl md:text-4xl text-primary mb-4 leading-relaxed">
             Yaaay!
           </h1>
