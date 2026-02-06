@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import FloatingHearts from "@/components/FloatingHearts";
 import Confetti from "@/components/Confetti";
+import { playYesSound, playNoSound } from "@/lib/sounds";
 
 const NO_MESSAGES = [
   "Will you be my Valentine? 💘",
@@ -31,8 +32,8 @@ const ValentineCard = () => {
     setNoCount((prev) => prev + 1);
     setIsWiggling(true);
     setTimeout(() => setIsWiggling(false), 500);
+    playNoSound();
 
-    // Vibration feedback if supported
     if (navigator.vibrate) {
       navigator.vibrate(50);
     }
@@ -41,6 +42,7 @@ const ValentineCard = () => {
   const handleYes = useCallback(() => {
     setAccepted(true);
     setShowConfetti(true);
+    playYesSound();
 
     if (navigator.vibrate) {
       navigator.vibrate([100, 50, 100, 50, 200]);
