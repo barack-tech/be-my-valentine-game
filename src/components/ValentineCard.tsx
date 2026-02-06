@@ -90,8 +90,14 @@ const ValentineCard = () => {
 
   return (
     <div className={`valentine-card max-w-sm w-full mx-4 text-center ${isWiggling ? "animate-wiggle" : ""}`}>
-      <div className="text-5xl mb-6 animate-pulse-heart">
-        {noCount >= 5 ? "🥺" : noCount >= 3 ? "😢" : "💘"}
+      <div className="rounded-2xl overflow-hidden mb-4">
+        <iframe
+          src="https://tenor.com/embed/10586631440146974859"
+          width="100%"
+          style={{ aspectRatio: "0.935743", border: "none" }}
+          allowFullScreen
+          title="Minion Love GIF"
+        />
       </div>
 
       <h1 className="font-display text-2xl md:text-3xl text-foreground mb-8 leading-relaxed transition-all duration-300">
