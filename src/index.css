@@ -42,6 +42,7 @@
     --valentine-hot: 340 90% 65%;
     --valentine-cream: 30 60% 97%;
     --valentine-gold: 40 90% 65%;
+    --valentine-lavender: 270 60% 70%;
 
     --font-display: 'Pacifico', cursive;
     --font-body: 'Quicksand', sans-serif;
@@ -220,5 +221,16 @@
 
   .animate-sparkle {
     animation: sparkle var(--duration, 2s) var(--delay, 0s) ease-in-out infinite;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

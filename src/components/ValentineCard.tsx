@@ -4,16 +4,36 @@ import Confetti from "@/components/Confetti";
 import { playYesSound, playNoSound } from "@/lib/sounds";
 
 const NO_MESSAGES = [
-  "Will you be my Valentine? 💘",
-  "Are you sure? 🥺",
+  "Will you be my Valentine, Lavender? 💘",
+  "Are you sure, Lavender? 🥺",
   "Really really sure? 😢",
   "Don't break my heart... 💔",
   "I'll be so sad 😭",
   "Please reconsider! 🙏",
   "Think about it again 💭",
-  "Last chance... 😢",
+  "Last chance, Lavender... 😢",
   "You're really gonna say no? 🥀",
   "Fine... just kidding, please? 💕",
+];
+
+const POEM_LINES = [
+  "Lavender, like your name, you soften the air,",
+  "A quiet kind of magic that's simply just there.",
+  "",
+  "In small, ordinary moments you somehow make bright,",
+  "You turn simple days into something that feels right.",
+  "",
+  "The way that you laugh, the way that you care,",
+  "The warmth in your words, the patience you share—",
+  "",
+  "It's in all the little things you probably don't see",
+  "That make every moment better for me.",
+  "",
+  "So before all the roses and chocolate begin,",
+  "I just want to ask with a hopeful grin:",
+  "",
+  "This February 14th, and all days that follow too,",
+  "Will you be my Valentine, Lavender—you?",
 ];
 
 const ValentineCard = () => {
@@ -21,6 +41,7 @@ const ValentineCard = () => {
   const [accepted, setAccepted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [isWiggling, setIsWiggling] = useState(false);
+  const [showPoem, setShowPoem] = useState(false);
 
   const yesScale = 1 + noCount * 0.25;
   const noScale = Math.max(0.5, 1 - noCount * 0.08);
@@ -53,6 +74,7 @@ const ValentineCard = () => {
     setAccepted(false);
     setShowConfetti(false);
     setNoCount(0);
+    setShowPoem(false);
   }, []);
 
   if (accepted) {
@@ -70,12 +92,70 @@ const ValentineCard = () => {
             />
           </div>
           <h1 className="font-display text-3xl md:text-4xl text-primary mb-4 leading-relaxed">
-            Yaaay!
+            Yaaay, Lavender!
           </h1>
           <p className="text-lg md:text-xl text-foreground/80 font-body mb-2">
-            I knew you'd say yes!
+            I knew you'd say yes! 🥰
           </p>
-          <p className="text-4xl my-6">🥰💘🎉</p>
+          <p className="text-4xl my-6">💘🎉💐</p>
+
+          {/* Poem reveal */}
+          {!showPoem ? (
+            <button
+              onClick={() => setShowPoem(true)}
+              className="text-sm font-body font-semibold px-5 py-2.5 rounded-full mb-6 transition-all duration-300"
+              style={{
+                background: "hsl(var(--valentine-lavender) / 0.15)",
+                color: "hsl(var(--valentine-lavender))",
+                border: "1px solid hsl(var(--valentine-lavender) / 0.3)",
+              }}
+            >
+              Read a little something for you 💜
+            </button>
+          ) : (
+            <div
+              className="text-left rounded-2xl p-5 mb-6 animate-fade-in"
+              style={{
+                background: "hsl(var(--valentine-lavender) / 0.08)",
+                border: "1px solid hsl(var(--valentine-lavender) / 0.2)",
+              }}
+            >
+              {POEM_LINES.map((line, i) =>
+                line === "" ? (
+                  <div key={i} className="h-3" />
+                ) : (
+                  <p
+                    key={i}
+                    className="text-sm font-body leading-relaxed text-foreground/80"
+                    style={{
+                      animation: `fadeInUp 0.4s ease-out ${i * 0.07}s both`,
+                    }}
+                  >
+                    {line.includes("Lavender") ? (
+                      <>
+                        {line.split("Lavender").map((part, j, arr) => (
+                          <span key={j}>
+                            {part}
+                            {j < arr.length - 1 && (
+                              <span
+                                className="font-bold"
+                                style={{ color: "hsl(var(--valentine-lavender))" }}
+                              >
+                                Lavender
+                              </span>
+                            )}
+                          </span>
+                        ))}
+                      </>
+                    ) : (
+                      line
+                    )}
+                  </p>
+                )
+              )}
+            </div>
+          )}
+
           <p className="text-muted-foreground text-sm mb-8 font-body">
             You just made someone very happy ✨
           </p>
@@ -92,6 +172,13 @@ const ValentineCard = () => {
 
   return (
     <div className={`valentine-card max-w-sm w-full mx-4 text-center ${isWiggling ? "animate-wiggle" : ""}`}>
+      <p
+        className="text-xs font-body tracking-widest uppercase mb-4"
+        style={{ color: "hsl(var(--valentine-lavender))" }}
+      >
+        ✦ For Lavender ✦
+      </p>
+
       <div className="rounded-2xl overflow-hidden mb-4">
         <iframe
           src="https://tenor.com/embed/10586631440146974859"
