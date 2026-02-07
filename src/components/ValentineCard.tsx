@@ -41,7 +41,7 @@ const ValentineCard = () => {
   const [accepted, setAccepted] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [isWiggling, setIsWiggling] = useState(false);
-  const [showPoem, setShowPoem] = useState(false);
+  
 
   const yesScale = 1 + noCount * 0.25;
   const noScale = Math.max(0.5, 1 - noCount * 0.08);
@@ -74,7 +74,7 @@ const ValentineCard = () => {
     setAccepted(false);
     setShowConfetti(false);
     setNoCount(0);
-    setShowPoem(false);
+    
   }, []);
 
   if (accepted) {
@@ -132,26 +132,13 @@ const ValentineCard = () => {
       </div>
 
       {/* Poem section */}
-      {!showPoem ? (
-        <button
-          onClick={() => setShowPoem(true)}
-          className="text-sm font-body font-semibold px-5 py-2.5 rounded-full mb-6 transition-all duration-300 hover-scale"
-          style={{
-            background: "hsl(var(--valentine-lavender) / 0.15)",
-            color: "hsl(var(--valentine-lavender))",
-            border: "1px solid hsl(var(--valentine-lavender) / 0.3)",
-          }}
-        >
-          Read a little something for you 💜
-        </button>
-      ) : (
-        <div
-          className="text-left rounded-2xl p-5 mb-6 animate-fade-in"
-          style={{
-            background: "hsl(var(--valentine-lavender) / 0.08)",
-            border: "1px solid hsl(var(--valentine-lavender) / 0.2)",
-          }}
-        >
+      <div
+        className="text-left rounded-2xl p-5 mb-6 animate-fade-in"
+        style={{
+          background: "hsl(var(--valentine-lavender) / 0.08)",
+          border: "1px solid hsl(var(--valentine-lavender) / 0.2)",
+        }}
+      >
           {POEM_LINES.map((line, i) =>
             line === "" ? (
               <div key={i} className="h-3" />
@@ -185,8 +172,7 @@ const ValentineCard = () => {
               </p>
             )
           )}
-        </div>
-      )}
+      </div>
 
       <h1 className="font-display text-2xl md:text-3xl text-foreground mb-8 leading-relaxed transition-all duration-300">
         {currentMessage}
