@@ -98,64 +98,6 @@ const ValentineCard = () => {
             I knew you'd say yes! 🥰
           </p>
           <p className="text-4xl my-6">💘🎉💐</p>
-
-          {/* Poem reveal */}
-          {!showPoem ? (
-            <button
-              onClick={() => setShowPoem(true)}
-              className="text-sm font-body font-semibold px-5 py-2.5 rounded-full mb-6 transition-all duration-300"
-              style={{
-                background: "hsl(var(--valentine-lavender) / 0.15)",
-                color: "hsl(var(--valentine-lavender))",
-                border: "1px solid hsl(var(--valentine-lavender) / 0.3)",
-              }}
-            >
-              Read a little something for you 💜
-            </button>
-          ) : (
-            <div
-              className="text-left rounded-2xl p-5 mb-6 animate-fade-in"
-              style={{
-                background: "hsl(var(--valentine-lavender) / 0.08)",
-                border: "1px solid hsl(var(--valentine-lavender) / 0.2)",
-              }}
-            >
-              {POEM_LINES.map((line, i) =>
-                line === "" ? (
-                  <div key={i} className="h-3" />
-                ) : (
-                  <p
-                    key={i}
-                    className="text-sm font-body leading-relaxed text-foreground/80"
-                    style={{
-                      animation: `fadeInUp 0.4s ease-out ${i * 0.07}s both`,
-                    }}
-                  >
-                    {line.includes("Lavender") ? (
-                      <>
-                        {line.split("Lavender").map((part, j, arr) => (
-                          <span key={j}>
-                            {part}
-                            {j < arr.length - 1 && (
-                              <span
-                                className="font-bold"
-                                style={{ color: "hsl(var(--valentine-lavender))" }}
-                              >
-                                Lavender
-                              </span>
-                            )}
-                          </span>
-                        ))}
-                      </>
-                    ) : (
-                      line
-                    )}
-                  </p>
-                )
-              )}
-            </div>
-          )}
-
           <p className="text-muted-foreground text-sm mb-8 font-body">
             You just made someone very happy ✨
           </p>
@@ -188,6 +130,63 @@ const ValentineCard = () => {
           title="Minion Love GIF"
         />
       </div>
+
+      {/* Poem section */}
+      {!showPoem ? (
+        <button
+          onClick={() => setShowPoem(true)}
+          className="text-sm font-body font-semibold px-5 py-2.5 rounded-full mb-6 transition-all duration-300 hover-scale"
+          style={{
+            background: "hsl(var(--valentine-lavender) / 0.15)",
+            color: "hsl(var(--valentine-lavender))",
+            border: "1px solid hsl(var(--valentine-lavender) / 0.3)",
+          }}
+        >
+          Read a little something for you 💜
+        </button>
+      ) : (
+        <div
+          className="text-left rounded-2xl p-5 mb-6 animate-fade-in"
+          style={{
+            background: "hsl(var(--valentine-lavender) / 0.08)",
+            border: "1px solid hsl(var(--valentine-lavender) / 0.2)",
+          }}
+        >
+          {POEM_LINES.map((line, i) =>
+            line === "" ? (
+              <div key={i} className="h-3" />
+            ) : (
+              <p
+                key={i}
+                className="text-sm font-body leading-relaxed text-foreground/80"
+                style={{
+                  animation: `fadeInUp 0.4s ease-out ${i * 0.07}s both`,
+                }}
+              >
+                {line.includes("Lavender") ? (
+                  <>
+                    {line.split("Lavender").map((part, j, arr) => (
+                      <span key={j}>
+                        {part}
+                        {j < arr.length - 1 && (
+                          <span
+                            className="font-bold"
+                            style={{ color: "hsl(var(--valentine-lavender))" }}
+                          >
+                            Lavender
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </>
+                ) : (
+                  line
+                )}
+              </p>
+            )
+          )}
+        </div>
+      )}
 
       <h1 className="font-display text-2xl md:text-3xl text-foreground mb-8 leading-relaxed transition-all duration-300">
         {currentMessage}
