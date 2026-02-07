@@ -121,16 +121,6 @@ const ValentineCard = () => {
         ✦ For Lavender ✦
       </p>
 
-      <div className="rounded-2xl overflow-hidden mb-4">
-        <iframe
-          src="https://tenor.com/embed/10586631440146974859"
-          width="100%"
-          style={{ aspectRatio: "0.935743", border: "none" }}
-          allowFullScreen
-          title="Minion Love GIF"
-        />
-      </div>
-
       {/* Poem section */}
       <div
         className="text-left rounded-2xl p-5 mb-6 animate-fade-in"
@@ -172,6 +162,16 @@ const ValentineCard = () => {
               </p>
             )
           )}
+      </div>
+
+      <div className="rounded-2xl overflow-hidden mb-4">
+        <iframe
+          src="https://tenor.com/embed/10586631440146974859"
+          width="100%"
+          style={{ aspectRatio: "0.935743", border: "none" }}
+          allowFullScreen
+          title="Minion Love GIF"
+        />
       </div>
 
       <h1 className="font-display text-2xl md:text-3xl text-foreground mb-8 leading-relaxed transition-all duration-300">
